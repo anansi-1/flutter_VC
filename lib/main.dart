@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/org_event_list_screen.dart'; 
+import 'screens/org_event.dart'; 
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
