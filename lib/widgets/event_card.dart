@@ -1,9 +1,17 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import '../models/org_event.dart';
 
+final _random = Random();
+final _fallbackImages = [
+  'assets/img/event_three.jpg',
+  'assets/img/event_four.jpg',
+  'assets/img/event_five.jpg',
+  'assets/img/event_six.jpg',
+];
+
 class EventCard extends StatelessWidget {
   final OrgEvent event;
-
   const EventCard({super.key, required this.event});
 
   @override
@@ -17,18 +25,24 @@ class EventCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (event.image != null)
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(16),
-              ),
-              child: Image.network(
-                event.image!,
-                width: double.infinity,
-                height: 180,
-                fit: BoxFit.cover,
-              ),
-            ),
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+            child:
+                event.image != null
+                    ? Image.network(
+                      event.image!,
+                      width: double.infinity,
+                      height: 180,
+                      fit: BoxFit.cover,
+                    )
+                    : Image.asset(
+                      _fallbackImages[_random.nextInt(_fallbackImages.length)],
+                      width: double.infinity,
+                      height: 180,
+                      fit: BoxFit.cover,
+                    ),
+          ),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

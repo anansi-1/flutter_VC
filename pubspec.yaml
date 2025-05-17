@@ -17,7 +17,6 @@ dependencies:
   flutter_riverpod: ^2.6.1
   json_annotation: ^4.9.0
   build_runner: ^2.4.15
-  json_serializable: ^6.9.5
 
 dev_dependencies:
   flutter_test:
@@ -28,3 +27,8 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+    - assets/img/event_five.jpg
+    - assets/img/event_six.jpg
+    - assets/img/event_four.jpg
+    - assets/img/event_three.jpg
