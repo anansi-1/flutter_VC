@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 
 class SearchBarWidget extends StatelessWidget {
   final ValueChanged<String> onChanged;
+  final String hintText;
 
-  const SearchBarWidget({super.key, required this.onChanged});
+  const SearchBarWidget({
+    super.key,
+    required this.onChanged,
+    this.hintText = 'Search for events...',
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       onChanged: onChanged,
       decoration: InputDecoration(
-        hintText: 'Search for events...',
+        hintText: hintText,
         prefixIcon: const Icon(Icons.search, color: Color(0xFF3597da)),
         filled: true,
         fillColor: Colors.white,
