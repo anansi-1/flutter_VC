@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_vc/screens/applicant_profile.dart';
 import 'package:flutter_vc/widgets/search_bar.dart';
 import '../providers/applicants_provider.dart';
 import '../models/applicant.dart';
@@ -123,7 +124,18 @@ class _EventApplicantsScreenState extends ConsumerState<EventApplicantsScreen> {
                               ),
                               TextButton.icon(
                                 onPressed: () {
-                                  // TODO: Navigate to application details
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (_) => ApplicantProfileScreen(
+                                            eventId: widget.eventId,
+                                            userId:
+                                                applicant.userId
+                                                    .toString(), // assuming it's int
+                                          ),
+                                    ),
+                                  );
                                 },
                                 icon: const Icon(
                                   Icons.article_outlined,
