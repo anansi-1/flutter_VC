@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_vc/screens/applicant_profile.dart';
 import 'package:flutter_vc/widgets/search_bar.dart';
 import '../providers/applicants_provider.dart';
-import '../models/applicant.dart';
+// import '../models/applicant.dart';
 
 class EventApplicantsScreen extends ConsumerStatefulWidget {
   final String eventId;
