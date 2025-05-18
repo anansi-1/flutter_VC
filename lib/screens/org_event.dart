@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_vc/screens/event_applicants_screen.dart';
 // import '../models/org_event.dart';
 import '../providers/org_event_provider.dart';
 import '../widgets/event_card.dart';
@@ -103,9 +104,23 @@ class _OrgEventListScreenState extends ConsumerState<OrgEventListScreen> {
                     return ListView.builder(
                       itemCount: filteredEvents.length,
                       itemBuilder: (context, index) {
-                        return EventCard(event: filteredEvents[index]);
+                        return EventCard(
+                          event: filteredEvents[index],
+                          onViewApplicants: (eventId) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (_) =>
+                                        EventApplicantsScreen(eventId: eventId),
+                              ),
+                            );
+                          },
+                        );
+
                       },
                     );
+
                   },
                   loading:
                       () => const Center(child: CircularProgressIndicator()),

@@ -12,7 +12,13 @@ final _fallbackImages = [
 
 class EventCard extends StatelessWidget {
   final OrgEvent event;
-  const EventCard({super.key, required this.event});
+  final void Function(String eventId) onViewApplicants;
+
+  const EventCard({
+    super.key,
+    required this.event,
+    required this.onViewApplicants,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,6 @@ class EventCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -69,7 +74,7 @@ class EventCard extends StatelessWidget {
                 const SizedBox(height: 12),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                  onPressed: () => onViewApplicants(event.id.toString()),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF3597da),
                       foregroundColor: Colors.white,
@@ -114,7 +119,13 @@ class _InfoRow extends StatelessWidget {
         children: [
           Icon(icon, size: 18, color: const Color(0xFF3597da)),
           const SizedBox(width: 10),
-          Flexible(child: Text(text, style: const TextStyle(fontSize: 14))),
+          Flexible(
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ],
       ),
     );
